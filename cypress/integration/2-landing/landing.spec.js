@@ -16,10 +16,8 @@ describe('Select Market', () => {
       cy.wrap(element).click()
       cy.wait(1000)
       select.click()
-      cy.log()
-            })
-        
-
+      })
+    
     })
 })
   
