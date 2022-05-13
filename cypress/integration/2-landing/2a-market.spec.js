@@ -1,5 +1,5 @@
 //Test Case: 
-// Testing the functionality of bein gable to select a Market and seeing the Landing Page change according to the Market Share
+// Testing the functionality of being able to select a Market and seeing the Landing Page change according to the Market Share
 // Expected Results:
 // 1. Marimekko changes
 // 2. Growth Matrix changes
