@@ -1,4 +1,9 @@
 {
     "viewportWidth": 1920,
-    "viewportHeight": 1080
+    "viewportHeight": 1080,
+    "baseUrl":"https://insights.streetbees.com/streetbees-staging/demoboard-v2",
+    "env": {
+      "email": "gunnar.finkeldeh@streetbees.com",
+      "password": "8pbgdm!Gtmd2UeY"
+    }
   }

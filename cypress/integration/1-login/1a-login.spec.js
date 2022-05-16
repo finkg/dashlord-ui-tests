@@ -1,10 +1,12 @@
 describe('Dashboard Login Page', () => {
   it('Login (Valid) into Dashboard', () => {
 
-    const email = ('gunnar.finkeldeh@streetbees.com')
-    const password = ('8pbgdm!Gtmd2UeY')
+    cy.clearCookies()
+    const email = Cypress.env('email')
+    const password = Cypress.env('password')
 
-    cy.visit('https://insights.streetbees.com/streetbees-staging/demoboard-v2/login')
+    let url = Cypress.config().baseUrl;
+    cy.visit(url)
     cy.get('[class="CookiesPopup"').contains('OK').click()
     cy.get('[name="user"]').type(email)
     cy.get('[name="password"]').type(password)
