@@ -26,9 +26,8 @@ describe('Selects a specific Market', () => {
 });
 
 
-//
+
 // Switches between different Markets
-//
 
 // describe('Switch between Markets', () => {
 //   it('Select Market from Dropdown', () => {

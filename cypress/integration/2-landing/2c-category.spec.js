@@ -7,6 +7,7 @@ describe('Select a Category', () => {
         cy.wait(2000)
 
         select.get('.Select-option').contains('Breads').click()
-        // cy.wait(5000)
+        cy.wait(2000)
+        cy.get('[style="height: 309.375px;"] > .SpacesMarimekko__Button').click()
     });
 });

@@ -9,7 +9,7 @@ describe('Dashboard Login Page', () => {
     cy.visit(url)
     cy.get('[class="CookiesPopup"').contains('OK').click()
     cy.get('[name="user"]').type(email)
-    cy.get('[name="password"]').type(password)
+    cy.get('[name="password"]').type(password, {log:false})
     cy.get('[type="submit"]').click()
     cy.url().should('contain', '/spaces')
   })

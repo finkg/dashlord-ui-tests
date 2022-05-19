@@ -5,5 +5,6 @@
     "env": {
       "email": "gunnar.finkeldeh@streetbees.com",
       "password": "8pbgdm!Gtmd2UeY"
-    }
+    },
+    "hideXHR": true
   }
