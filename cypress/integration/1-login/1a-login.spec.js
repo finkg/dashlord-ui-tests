@@ -1,16 +1,13 @@
-describe('Dashboard Login Page', () => {
-  it('Login (Valid) into Dashboard', () => {
+describe('Dashboard Login Page', function () {
 
-    cy.clearCookies()
-    const email = Cypress.env('email')
-    const password = Cypress.env('password')
+  
+  it('Login (Valid) into Dashboard', function () {
 
-    let url = Cypress.config().baseUrl;
-    cy.visit(url)
-    cy.get('[class="CookiesPopup"').contains('OK').click()
-    cy.get('[name="user"]').type(email)
-    cy.get('[name="password"]').type(password, {log:false})
+    cy.visit(this.signInData.url)
+    cy.get('[class="CookiesPopup"]').contains('OK').click()
+    cy.get('[name="user"]').type(this.signInData.email)
+    cy.get('[name="password"]').type(this.signInData.password, {log:false})
     cy.get('[type="submit"]').click()
-    cy.url().should('contain', '/spaces')
+    cy.url().should('contain', '/home')
   })
 })
