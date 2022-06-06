@@ -33,10 +33,10 @@ import './commands'
 //     }
 //   })
 
-beforeEach(function() {
-	cy.fixture('login').then(function(signInData) 
-	{this.signInData = signInData})  
-  });
+// beforeEach(function() {
+// 	cy.fixture('login').then(function(signInData) 
+// 	{this.signInData = signInData})  
+//   });
 
 
 //Code to Handle the Sesssions in cypress.
@@ -56,6 +56,7 @@ beforeEach(function() {
 // 		}
 // 	})
 // })
+
 
 // Hide fetch/XHR requests
 if (Cypress.config('hideXHR')) {
