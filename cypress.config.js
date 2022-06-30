@@ -23,7 +23,7 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
     },
     baseUrl: 'https://insights.streetbees.com/streetbees-staging/demoboard-v2',
-    experimentalSessionAndOrigin: false,
+    experimentalSessionAndOrigin: true,
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
   },
 })

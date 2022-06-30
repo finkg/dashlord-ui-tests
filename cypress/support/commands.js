@@ -32,14 +32,12 @@ Cypress.Commands.add('login', (email, password) => {
     password = Cypress.env('password')
     // let url = Cypress.config().baseUrl;
     
-    // cy.session([email, password], () => {
     cy.visit('/')
     cy.get('[name="user"]').type(email)
     cy.get('[name="password"]').type(password, {
         log: false
     })
     cy.get('[type="submit"]').click()
-    // })
 })
 
 
