@@ -1,11 +1,11 @@
 // Scenario: As a User I want to be navigate from Home Page, using the same filter criteria, through to Spaces Details and Categories Page 
 
-describe('Go Navigation Journey', () => {
+describe('Go Spaces Landing/Details', () => {
 
     beforeEach('Login', () => {
-        cy.session('Session', () => {
+        cy.session('Save Session', () => {
             cy.login()
-            cy.url().should('contain', '/home')
+            cy.url().should('contain', '/spaces')
             cy.get('.CookiesPopup > button').contains('OK').click()
             cy.wait(1000)
         })
