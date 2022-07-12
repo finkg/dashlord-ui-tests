@@ -1,3 +1,5 @@
+//Scenario: As a User I want to log into the Dashboard and view the Go Core Home Page
+
 describe('Go Home Page', () => {
 
     beforeEach('Login', () => {
@@ -9,7 +11,11 @@ describe('Go Home Page', () => {
         })
     })
 
-    it('On Home Page Validation', () => {
+    after(() => {
+        cy.logout()
+    });
+
+    it('Home Page Validation', () => {
         cy.visit('/go')
         cy.get('.list-reset > :nth-child(2) > .caps').contains("home").click()
 
@@ -33,7 +39,8 @@ describe('Go Home Page', () => {
         cy.url().should('contain', '/data/hot-topics/remote-work-commuting')
         cy.get('.sub_level > .selected > a').should('has.text', "Remote Work & Commuting")
         cy.wait(1000)
-        cy.get('.BackButton').should('contain', "back to", "home").should('be.visible').click()
+        cy.get('.BackButton').should('contain', "back to").should('be.visible')
+        cy.get('.BackButton').should('contain', "home").should('be.visible').click()
 
         //Click Category Wrapper Button
 

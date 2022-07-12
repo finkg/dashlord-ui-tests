@@ -10,7 +10,7 @@ module.exports = defineConfig({
     password: '8pbgdm!Gtmd2UeY',
     qa_email: 'qa_sb@streetbees.com',
     qa_password: 'zLFSjV8MNe7wLFKc',
-    client: 'streetbees-staging',
+    slug: 'streetbees-staging',
     dashboard: 'demoboard-v2',
     api_url: "'https://dashlord-api.streetbees.com",
     qa_url: 'https://dashlord-sprinkles-9353336d.dev-bees.com',

@@ -32,7 +32,7 @@ Cypress.Commands.add('login', (email, password) => {
     password = Cypress.env('password')
     // let url = Cypress.config().baseUrl;
     
-    cy.visit('/')
+    cy.visit('/home')
     cy.get('[name="user"]').type(email)
     cy.get('[name="password"]').type(password, {
         log: false
@@ -40,6 +40,11 @@ Cypress.Commands.add('login', (email, password) => {
     cy.get('[type="submit"]').click()
 })
 
+//Logout
+Cypress.Commands.add('logout', () => {
+    cy.get('.DropdownMenu__NoButton').click()
+    cy.get('.DropdownMenu_Content > :nth-child(2)').click()
+})
 
 //Visit Dashboard
 // Cypress.Commands.add("visitDashboard", (client, dashboard, route) => {
