@@ -11,21 +11,16 @@ describe('Go Home Page', () => {
         })
     })
 
-    after(() => {
-        cy.logout()
-    });
+    // after(() => {
+    //     cy.logout()
+    // });
 
     it('Home Page Validation', () => {
         cy.visit('/go')
         cy.get('.list-reset > :nth-child(2) > .caps').contains("home").click()
 
         //Select Market Filter and choose Country
-        const market = cy.get('.DropdownFilter').contains('.FilterItem > div:first-child', 'Market')
-
-        let selectMarket = market.get('.Select')
-        selectMarket.click()
-        selectMarket.get('.Select-option').contains('China').click()
-        cy.wait(1000)
+        cy.marketDropdown()
 
         cy.get('.categories__info > .allcaps').should('have.text', "Remote Work & commuting")
         cy.get('.h3').should('have.text', "All Demand Spaces")
@@ -39,16 +34,36 @@ describe('Go Home Page', () => {
         cy.url().should('contain', '/data/hot-topics/remote-work-commuting')
         cy.get('.sub_level > .selected > a').should('has.text', "Remote Work & Commuting")
         cy.wait(1000)
+
+        //User click on "Back to Home" button
         cy.get('.BackButton').should('contain', "back to").should('be.visible')
         cy.get('.BackButton').should('contain', "home").should('be.visible').click()
+        cy.url().should('contain', "/go")
 
         //Click Category Wrapper Button
+    });
 
+    it('Select & View Demand Space: Family Gatherings', () => {
+        cy.visit('/go')
+        cy.marketDropdown()
 
+        //Click on a Demand Space on the Slider: Family Gatherings
+        cy.get('[data-index="2"] > :nth-child(1) > .slide > .cover_bg').click()
+        cy.get('.slick-current > :nth-child(1) > .slide > .cover_bg > .slide-inner-title').should('have.text', "Family Gatherings")
+        cy.get('.headline-section > .heading-font').should('have.text', "Family Gatherings")
+        
+        //Click on View this Space Button
+        cy.get('.headline-section > .btn').should('contain', "VIEW THIS SPACE").click()
+        cy.url().should('contain', "/spaces")
 
-        // cy.get('.FilterItem').contains("Activities & socialising").click()
+        //Confirm user is taken to correct Spaces Details Page
+        cy.get('.OverviewWidget-text > .h1').should('have.text', "Family Gatherings")
+        cy.wait(1000)
 
- 
+        //User clicks on "Back to Home" button
+        cy.get('.BackButton').should('contain', "back to").should('be.visible')
+        cy.get('.BackButton').should('contain', "home").should('be.visible').click()
+        cy.url().should('contain', "/go")
     });
 
 
