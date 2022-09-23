@@ -1,4 +1,4 @@
-describe("Go Spaces Details", () => {
+describe("Analytics", () => {
   beforeEach("Login", () => {
     cy.session("Save Session", () => {
       cy.login();
@@ -11,11 +11,8 @@ describe("Go Spaces Details", () => {
   // after(() => {
   //     cy.logout()
   // });
-
-  it("Select Market/Category", () => {
-    cy.visit("/spaces");
-
-    cy.marketDropdown();
-    cy.categoryDropdown();
+  it("Open Analytics Page", () => {
+    cy.visit("/data");
   });
+  cy.percySnapshot();
 });

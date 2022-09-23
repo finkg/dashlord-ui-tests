@@ -14,8 +14,9 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
-import 'cypress-react-selector';
+import "./commands";
+import "cypress-react-selector";
+import "@percy/cypress";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
@@ -35,16 +36,15 @@ import 'cypress-react-selector';
 //   })
 
 // Hide fetch/XHR requests
-if (Cypress.config('hideXHR')) {
+if (Cypress.config("hideXHR")) {
+  const app = window.top;
 
-	const app = window.top;
+  if (!app.document.head.querySelector("[data-hide-command-log-request]")) {
+    const style = app.document.createElement("style");
+    style.innerHTML =
+      ".command-name-request, .command-name-xhr { display: none }";
+    style.setAttribute("data-hide-command-log-request", "");
 
-	if (!app.document.head.querySelector('[data-hide-command-log-request]')) {
-		const style = app.document.createElement('style');
-		style.innerHTML =
-			'.command-name-request, .command-name-xhr { display: none }';
-		style.setAttribute('data-hide-command-log-request', '');
-
-		app.document.head.appendChild(style);
-	}
+    app.document.head.appendChild(style);
+  }
 }
