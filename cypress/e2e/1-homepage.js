@@ -64,7 +64,6 @@ describe("Go Home Page", () => {
       "have.text",
       "Family Gatherings"
     );
-    cy.percySnapshot();
 
     //Click on View this Space Button
     cy.get(".headline-section > .btn")
@@ -78,7 +77,6 @@ describe("Go Home Page", () => {
       "Family Gatherings"
     );
     cy.wait(1000);
-    cy.percySnapshot();
 
     //User clicks on "Back to Home" button
     cy.get(".BackButton").should("contain", "back to").should("be.visible");
@@ -87,6 +85,5 @@ describe("Go Home Page", () => {
       .should("be.visible")
       .click();
     cy.url().should("contain", "/go");
-    cy.percySnapshot();
   });
 });
