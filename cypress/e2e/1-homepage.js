@@ -10,12 +10,15 @@ describe("Go Home Page", () => {
     });
   });
 
+  beforeEach("Go to GO Page", () => {
+    cy.visit("/go");
+  });
+
   // after(() => {
   //     cy.logout()
   // });
 
   it("Home Page Validation", () => {
-    cy.visit("/go");
     cy.get(".list-reset > :nth-child(2) > .caps").contains("home").click();
 
     //Select Market Filter and choose Country
@@ -29,8 +32,6 @@ describe("Go Home Page", () => {
   });
 
   it("Select & View Hot Topics: Remote Working", () => {
-    cy.visit("/go");
-
     //Click View Data Button
     cy.get(".pb2 > .view-data-btn").should("has.text", "View data").click();
     cy.url().should("contain", "/data/hot-topics/remote-work-commuting");
@@ -52,7 +53,6 @@ describe("Go Home Page", () => {
   });
 
   it("Select & View Demand Space: Family Gatherings", () => {
-    cy.visit("/go");
     cy.marketDropdown();
 
     //Click on a Demand Space on the Slider: Family Gatherings

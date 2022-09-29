@@ -10,24 +10,28 @@ describe("Go Spaces Landing", () => {
     });
   });
 
-  // after(() => {
-  //     cy.logout()
-  // });
+  beforeEach("Go to Spaces Page", () => {
+    cy.visit("/spaces");
+  });
+
+ after(() => {
+  cy.get('.p3').scrollTo("bottom", {easing: "linear"});
+  cy.percySnapshot()
+});
 
   it("Select Market/Category", () => {
-    cy.visit("/spaces");
-
     cy.marketDropdown();
     cy.categoryDropdown();
 
-    const spaces = cy
-      .get(".SpacesMarimekko__Table")
-      .contains(".SpacesMarimekko__Col > :nth-child(0)", "Bonding");
+    // const spaces = cy
+    //   .get(".SpacesMarimekko__Table")
+    //   .contains(".SpacesMarimekko__Col > :nth-child(0)", "Bonding");
 
-    let selectSpaces = spaces.get(".DeepLink");
-    selectSpaces
-      .get(".SpacesMarimekko__Button")
-      .contains("Family Gatherings")
-      .click();
+    // let selectSpaces = spaces.get(".DeepLink");
+    // selectSpaces
+    //   .get(".SpacesMarimekko__Button")
+    //   .contains("Family Gatherings")
+    //   .click();
+
   });
 });

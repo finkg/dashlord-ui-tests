@@ -1,14 +1,11 @@
 const endpoints = {
-    project: (client, dashboard) =>
-        `v1/clients/${client}/project/${dashboard}`,
-    login: (client, dashboard) =>
-        `v1/clients/${client}/project/${dashboard}/login`,
-    data: (client, dashboard) =>
-        `v1/clients/${client}/dashboards/${dashboard}/data`,
-    summary: (client, dashboard) =>
-        `v1/clients/${client}/dashboards/${dashboard}/summary`,
-    widget: (client, dashboard, id) =>
-        `v1/clients/${client}/dashboards/${dashboard}/data/widgets/${id}`,
-}
+  project: (slug, dashboard) => `v1/clients/${slug}/project/${dashboard}`,
+  login: (slug, dashboard) => `v1/clients/${slug}/project/${dashboard}/login`,
+  data: (slug, dashboard) => `v1/clients/${slug}/dashboards/${dashboard}/data`,
+  summary: (slug, dashboard) =>
+    `v1/clients/${slug}/dashboards/${dashboard}/summary`,
+  widget: (slug, dashboard, id) =>
+    `v1/clients/${slug}/dashboards/${dashboard}/data/widgets/${id}`,
+};
 
-export default endpoints
+export default endpoints;

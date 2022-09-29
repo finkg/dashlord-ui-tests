@@ -26,13 +26,12 @@
 
 import "cypress-localstorage-commands";
 import "cypress-react-selector";
-// import "@percy/cypress";
+import "@percy/cypress";
 
 //Login
 Cypress.Commands.add("login", (email, password) => {
-  email = Cypress.env("email");
-  password = Cypress.env("password");
-  // let url = Cypress.config().baseUrl;
+  email = Cypress.env("qa_email");
+  password = Cypress.env("qa_password");
 
   cy.visit("/home");
   cy.get('[name="user"]').type(email);
@@ -40,6 +39,36 @@ Cypress.Commands.add("login", (email, password) => {
     log: false,
   });
   cy.get('[type="submit"]').click();
+  // const apiUrl =
+  //   "https://dashlord-api.streetbees.com/v1/clients/streetbees-staging/project/demoboard-v2/login";
+  //   console.log
+  // cy.intercept({
+  //   method: "POST",
+  //   url: apiUrl,
+  //   query: {
+  //     data: "token",
+  //   },
+  // });
+});
+
+Cypress.Commands.add("api_login", (slug, dashboard) => {
+  const apiUrl =
+    "https://dashlord-api.streetbees.com/v1/clients/streetbees-staging/project/demoboard-v2/login";
+  var token = "";
+  cy.request({
+    method: "POST",
+    url: apiUrl,
+    body: {
+      user: {
+        email: Cypress.env("email"),
+        password: Cypress.env("password"),
+      },
+    },
+  }).then((json) => {
+    token = json.body.data.user.token;
+    return token;
+    console.log();
+  });
 });
 
 //Logout
@@ -76,28 +105,40 @@ Cypress.Commands.add("categoryDropdown", () => {
   cy.wait(2000);
 });
 
-//Visit Dashboard
-// Cypress.Commands.add("visitDashboard", (client, dashboard, route) => {
-//     const dlWeb_url = Cypress.env("dashlord_url");
-//     const apiBaseUrl = Cypress.env("api_url");
-//     const dashboardUrl = endpoints.project(client, dashboard);
+// import endpoints from "../support/endpoints";
 
-//     const apiUrl = apiBaseUrl + "/" + dashboardUrl;
-//     //cy.log(apiUrl)
-//     let url = `/${client}/${dashboard}`;
+// Cypress.Commands.add("login2", (client, dashboard) => {
+//   const baseUrl = Cypress.env("api_url");
+//   const loginUrl = endpoints.login(client, dashboard);
 
-//     if (route) {
-//       url += "/" + route;
-//     }
-
-//     //cy.log(url)
-//     cy.server();
-//     cy.route(apiUrl).as("dashboard");
-
-//     cy.visit(dlWeb_url + url);
-//     cy.wait("@dashboard");
-
-//     //Accept the popup
-//     cy.get(".CookiesPopup button").click();
-//     cy.wait(1000);
+//   cy.request({
+//     method: "POST",
+//     url: baseUrl + "/" + loginUrl,
+//     body: {
+//       user: {
+//         email: Cypress.env("dl_userName"),
+//         password: Cypress.env("dl_password"),
+//       },
+//     },
+//   }).then((resp) => {
+//     const {
+//       body: { user },
+//     } = resp;
+//     cy.setCookie("api-token", user.token);
 //   });
+// });
+
+// //Visit Dashboard
+// Cypress.Commands.add("visitDashboard", (client, dashboard, route) => {
+//   const dlWeb_url = Cypress.env("dashlord_url");
+//   const apiBaseUrl = Cypress.env("api_url");
+//   const dashboardUrl = endpoints.project(client, dashboard);
+
+//   const apiUrl = apiBaseUrl + "/" + dashboardUrl;
+//   //cy.log(apiUrl)
+//   let url = `/${client}/${dashboard}`;
+
+//   if (route) {
+//     url += "/" + route;
+// }
+// });

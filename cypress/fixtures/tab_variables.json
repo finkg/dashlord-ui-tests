@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "header": "Hot Topics",
+    "subtabs": [
+      {
+        "subid": 1,
+        "tabName": "Future of Work"
+      },
+      {
+        "subid": 2,
+        "tabName": "Activities & Socialising"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "header": "Demand Space"
+  },
+  {
+    "id": 3,
+    "header": "Category Development"
+  },
+  {
+    "id": 4,
+    "header": "Brands"
+  }
+]
