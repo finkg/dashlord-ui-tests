@@ -20,6 +20,10 @@ import "cypress-react-selector";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
+after(() => {
+  cy.task("generateReport");
+});
+
 //Use a value/keyword in Test Cases to run specific Test Suites
 // beforeEach(function() {
 //     let testSuite = Cypress.env('SUITE');

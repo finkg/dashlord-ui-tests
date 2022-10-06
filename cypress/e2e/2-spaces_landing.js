@@ -14,15 +14,15 @@ describe("Go Spaces Landing", () => {
     cy.visit("/spaces");
   });
 
- after(() => {
-  cy.get('.p3').scrollTo("bottom", {easing: "linear"});
-  cy.percySnapshot()
-});
-
   it("Select Market/Category", () => {
     cy.marketDropdown();
     cy.categoryDropdown();
 
+    cy.get(
+      '[style="grid-area: auto / 1 / span 3 / span 4; min-width: 0px;"] > .bg-white > .WidgetContainer'
+    ).click();
+    // cy.compareSnapshot('growth matrix');
+    cy.screenshot();
     // const spaces = cy
     //   .get(".SpacesMarimekko__Table")
     //   .contains(".SpacesMarimekko__Col > :nth-child(0)", "Bonding");
@@ -32,6 +32,5 @@ describe("Go Spaces Landing", () => {
     //   .get(".SpacesMarimekko__Button")
     //   .contains("Family Gatherings")
     //   .click();
-
   });
 });

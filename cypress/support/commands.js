@@ -28,6 +28,9 @@ import "cypress-localstorage-commands";
 import "cypress-react-selector";
 import "@percy/cypress";
 
+const compareSnapshotCommand = require("cypress-image-diff-js/dist/command");
+compareSnapshotCommand();
+
 //Login
 Cypress.Commands.add("login", (email, password) => {
   email = Cypress.env("qa_email");
@@ -88,7 +91,7 @@ Cypress.Commands.add("marketDropdown", () => {
 
   let selectMarket = market.get(".Select");
   selectMarket.first().click();
-  selectMarket.get(".Select-option").contains("United States").click();
+  selectMarket.get(".Select-option").contains("United Kingdom").click();
   cy.wait(1000);
 });
 
