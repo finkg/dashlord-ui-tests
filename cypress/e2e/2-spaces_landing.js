@@ -17,12 +17,13 @@ describe("Go Spaces Landing", () => {
   it("Select Market/Category", () => {
     cy.marketDropdown();
     cy.categoryDropdown();
-
+    cy.wait(500)
     cy.get(
       '[style="grid-area: auto / 1 / span 3 / span 4; min-width: 0px;"] > .bg-white > .WidgetContainer'
     ).click();
-    // cy.compareSnapshot('growth matrix');
-    cy.screenshot();
+    cy.compareSnapshot('growth matrix');
+
+
     // const spaces = cy
     //   .get(".SpacesMarimekko__Table")
     //   .contains(".SpacesMarimekko__Col > :nth-child(0)", "Bonding");

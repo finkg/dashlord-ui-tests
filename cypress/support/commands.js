@@ -31,10 +31,23 @@ import "@percy/cypress";
 const compareSnapshotCommand = require("cypress-image-diff-js/dist/command");
 compareSnapshotCommand();
 
-//Login
+//Login Staging
+// Cypress.Commands.add("login", (email, password) => {
+//   email = Cypress.env("qa_email");
+//   password = Cypress.env("qa_password");
+
+//   cy.visit("/home");
+//   cy.get('[name="user"]').type(email);
+//   cy.get('[name="password"]').type(password, {
+//     log: false,
+//   });
+//   cy.get('[type="submit"]').click();
+// });
+
+//Login Production
 Cypress.Commands.add("login", (email, password) => {
-  email = Cypress.env("qa_email");
-  password = Cypress.env("qa_password");
+  email = Cypress.env("email");
+  password = Cypress.env("password");
 
   cy.visit("/home");
   cy.get('[name="user"]').type(email);
@@ -42,16 +55,6 @@ Cypress.Commands.add("login", (email, password) => {
     log: false,
   });
   cy.get('[type="submit"]').click();
-  // const apiUrl =
-  //   "https://dashlord-api.streetbees.com/v1/clients/streetbees-staging/project/demoboard-v2/login";
-  //   console.log
-  // cy.intercept({
-  //   method: "POST",
-  //   url: apiUrl,
-  //   query: {
-  //     data: "token",
-  //   },
-  // });
 });
 
 Cypress.Commands.add("api_login", (slug, dashboard) => {

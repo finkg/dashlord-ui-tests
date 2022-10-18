@@ -3,8 +3,6 @@ package-lock.json
 package.json
 cypress/videos/**
 cypress/screenshots/**
-cypress-visual-report/cypress-visual-report.html
-cypress-visual-screenshots/baseline/2-spaces_landing-growth matrix.png
-cypress-visual-screenshots/comparison/2-spaces_landing-growth matrix.png
-cypress-visual-screenshots/comparison/undefined.png
-cypress-visual-screenshots/diff/2-spaces_landing-growth matrix.png
+cypress-visual-report/**
+cypress-visual-screenshots/**
+cypress/e2e/tabstest.js

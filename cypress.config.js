@@ -6,10 +6,12 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   viewportWidth: 1920,
-  viewportHeight: 1080,
+  viewportHeight: 3800,
   hideXHR: true,
   projectId: "ymkbzm",
+
   env: {
+    preserveOriginalScreenshot: true,
     email: "gunnar.finkeldeh@streetbees.com",
     password: "8pbgdm!Gtmd2UeY",
     qa_email: "qa_sb@streetbees.com",
@@ -29,8 +31,8 @@ module.exports = defineConfig({
       const getCompareSnapshotsPlugin = require("cypress-image-diff-js/dist/plugin");
       getCompareSnapshotsPlugin(on, config);
     },
-    baseUrl: "https://dashlord-sprinkles-2382937c.dev-bees.com/streetbees-staging/demoboard-v2",
-    // baseUrl: "https://insights.streetbees.com/streetbees-staging/demoboard-v2",
+    // baseUrl: "https://dashlord-sprinkles-2382937c.dev-bees.com/streetbees-staging/demoboard-v2",
+    baseUrl: "https://insights.streetbees.com/streetbees-staging/demoboard-v2",
     experimentalSessionAndOrigin: true,
     specPattern: "cypress/e2e/**/*.{js,jsx,ts,tsx}",
   },

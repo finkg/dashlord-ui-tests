@@ -10,7 +10,6 @@ describe("Analytics", () => {
 
   beforeEach("Go to Data Page", () => {
     cy.visit("/data");
-    // cy.screenshot()
   });
 
   // after(() => {
