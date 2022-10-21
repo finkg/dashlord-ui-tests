@@ -26,17 +26,25 @@
 
 import "cypress-localstorage-commands";
 import "cypress-react-selector";
-import "@percy/cypress";
+// import "@percy/cypress";
+// import { addMatchImageSnapshotCommand } from "cypress-image-snapshot/command";
 
-const compareSnapshotCommand = require("cypress-image-diff-js/dist/command");
-compareSnapshotCommand();
+// addMatchImageSnapshotCommand({
+//   failureThreshold: 0.03, // threshold for entire image
+//   failureThresholdType: "percent", // percent of image or number of pixels
+//   customDiffConfig: { threshold: 0.1 }, // threshold for each pixel
+//   capture: "viewport", // capture viewport in screenshot
+// });
+
+// const compareSnapshotCommand = require("cypress-image-diff-js/dist/command");
+// compareSnapshotCommand();
 
 //Login Staging
 // Cypress.Commands.add("login", (email, password) => {
 //   email = Cypress.env("qa_email");
 //   password = Cypress.env("qa_password");
 
-//   cy.visit("/home");
+//   cy.visit("/spaces");
 //   cy.get('[name="user"]').type(email);
 //   cy.get('[name="password"]').type(password, {
 //     log: false,
@@ -49,7 +57,7 @@ Cypress.Commands.add("login", (email, password) => {
   email = Cypress.env("email");
   password = Cypress.env("password");
 
-  cy.visit("/home");
+  cy.visit("/data");
   cy.get('[name="user"]').type(email);
   cy.get('[name="password"]').type(password, {
     log: false,

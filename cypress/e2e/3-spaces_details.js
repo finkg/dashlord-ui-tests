@@ -12,10 +12,6 @@ describe("Go Spaces Details", () => {
     cy.visit("/spaces");
   });
 
-  // after(() => {
-  //     cy.logout()
-  // });
-
   it("Select Market/Category", () => {
     cy.visit("/spaces");
 

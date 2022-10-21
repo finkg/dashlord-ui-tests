@@ -13,17 +13,15 @@ describe("Analytics", () => {
   });
 
   it("Verify Tabs", () => {
-    cy.fixture("tabs").then(tabs => {
-         const header = tabs.header;
+    cy.fixture("tabs").then((tabs) => {
+      const header = tabs.header;
 
-        // cy.get(".root_level > :nth-child(1) > a").should(header).click()
-    
-        cy.get("li.level-1").each(($li, i) => {
-          cy.wrap($li).should("be.visible").and("contain", header[i]).click();
-          cy.wait(500);
- 
+      // cy.get(".root_level > :nth-child(1) > a").should(header).click()
+
+      cy.get("li.level-1").each(($li, i) => {
+        cy.wrap($li).should("be.visible").and("contain", header[i]).click();
+        cy.wait(500);
+      });
     });
-
   });
-});
 });

@@ -2,7 +2,7 @@ describe("Analytics", () => {
   beforeEach("Login", () => {
     cy.session("Save Session", () => {
       cy.login();
-      cy.url().should("contain", "/home");
+      cy.url().should("contain", "/spaces");
       cy.get(".CookiesPopup > button").contains("OK").click();
       cy.wait(1000);
     });
@@ -11,10 +11,6 @@ describe("Analytics", () => {
   beforeEach("Go to Data Page", () => {
     cy.visit("/data");
   });
-
-  // after(() => {
-  //     cy.logout()
-  // });
 
   context("Tabs", () => {
     it("Verify Tabs", () => {

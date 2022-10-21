@@ -20,9 +20,15 @@ import "cypress-react-selector";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 
-after(() => {
-  cy.task("generateReport");
-});
+//Generate a Visual Diff Report
+// after(() => {
+//   cy.task("generateReport");
+// });
+
+//Logout after every Test
+// after(() => {
+//   cy.logout();
+// });
 
 //Use a value/keyword in Test Cases to run specific Test Suites
 // beforeEach(function() {
