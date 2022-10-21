@@ -15,16 +15,16 @@ describe("Analytics Filters", function () {
   });
 
   //filter side close
-  it("verify filters sidebar close when clicked", () => {
+  it("Close opened Filter Sidebar", () => {
     cy.get(".SidebarWrapper--filters .SidebarWrapper-header button").click();
     cy.wait(500);
   });
 
   //Apply criteria for Age Group
-  it("apply the criteria to filter (Age Group)", () => {
+  it("Apply Country", () => {
     const filters = cy
       .get(".SidebarWrapper-container")
-      .contains(".FilterItem > div:first-child", "Month");
+      .contains(".FilterItem > div:first-child", "COUNTRY");
 
     let selectFilter = filters.get(".Select");
     selectFilter.first().click();
