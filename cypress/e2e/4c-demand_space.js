@@ -18,7 +18,6 @@ describe("Analytics", function () {
         .should("contain", "Demand Space")
         .click();
       cy.get(".sub_level > :nth-child(1) > a").should("contain", "Overview");
-
     });
   });
 });

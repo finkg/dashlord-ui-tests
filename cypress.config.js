@@ -7,6 +7,9 @@ module.exports = defineConfig({
   projectId: "ymkbzm",
 
   env: {
+    "cypress-react-selector": {
+      root: "#__cy_root",
+    },
     preserveOriginalScreenshot: true,
     email: "gunnar.finkeldeh@streetbees.com",
     password: "8pbgdm!Gtmd2UeY",
