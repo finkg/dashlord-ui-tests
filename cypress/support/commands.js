@@ -119,40 +119,48 @@ Cypress.Commands.add("categoryDropdown", () => {
   cy.wait(2000);
 });
 
-// import endpoints from "../support/endpoints";
+//Open Compare Sidebar
+Cypress.Commands.add("openCompare", () => {
+  cy.get(".DashboardHeader__Actions > :nth-child(2)")
+    .should("have.text", "Compare")
+    .click();
+  cy.get(".SidebarWrapper--compare > .SidebarWrapper-header").should(
+    "have.text",
+    "Compare"
+  );
+  cy.get(".SidebarWrapper--compare > .SidebarWrapper-header > .btn").should(
+    "be.visible"
+  );
+});
 
-// Cypress.Commands.add("login2", (client, dashboard) => {
-//   const baseUrl = Cypress.env("api_url");
-//   const loginUrl = endpoints.login(client, dashboard);
+//Open Filters Sidebar
+Cypress.Commands.add("openFilters", () => {
+  cy.get(".DashboardHeader__Actions > :nth-child(1)")
+    .should("have.text", "Filters")
+    .click();
+  cy.get(".SidebarWrapper--filters > .SidebarWrapper-header").should(
+    "have.text",
+    "Filters"
+  );
+  cy.get(".SidebarWrapper--filters > .SidebarWrapper-header > .btn").should(
+    "be.visible"
+  );
+});
 
-//   cy.request({
-//     method: "POST",
-//     url: baseUrl + "/" + loginUrl,
-//     body: {
-//       user: {
-//         email: Cypress.env("dl_userName"),
-//         password: Cypress.env("dl_password"),
-//       },
-//     },
-//   }).then((resp) => {
-//     const {
-//       body: { user },
-//     } = resp;
-//     cy.setCookie("api-token", user.token);
-//   });
-// });
+//Close Filters Sidebar
+Cypress.Commands.add("closeFilters", () => {
+  cy.get(".SidebarWrapper--filters .SidebarWrapper-header button").click();
+  cy.get(".SidebarWrapper--filters > .SidebarWrapper-header > .btn").should(
+    "not.be.visible"
+  );
+  cy.wait(500);
+});
 
-// //Visit Dashboard
-// Cypress.Commands.add("visitDashboard", (client, dashboard, route) => {
-//   const dlWeb_url = Cypress.env("dashlord_url");
-//   const apiBaseUrl = Cypress.env("api_url");
-//   const dashboardUrl = endpoints.project(client, dashboard);
-
-//   const apiUrl = apiBaseUrl + "/" + dashboardUrl;
-//   //cy.log(apiUrl)
-//   let url = `/${client}/${dashboard}`;
-
-//   if (route) {
-//     url += "/" + route;
-// }
-// });
+//Close Compare Sidebar
+Cypress.Commands.add("closeCompare", () => {
+  cy.get(".SidebarWrapper--compare .SidebarWrapper-header button").click();
+  cy.get(".SidebarWrapper--compare > .SidebarWrapper-header > .btn").should(
+    "not.be.visible"
+  );
+  cy.wait(500);
+});

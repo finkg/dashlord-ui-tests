@@ -5,10 +5,9 @@ module.exports = defineConfig({
   viewportHeight: 1080,
   hideXHR: true,
   projectId: "ymkbzm",
-
   env: {
     "cypress-react-selector": {
-      root: "#__cy_root",
+      root: "#provider",
     },
     preserveOriginalScreenshot: true,
     email: "gunnar.finkeldeh@streetbees.com",

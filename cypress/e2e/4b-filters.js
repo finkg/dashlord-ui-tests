@@ -11,32 +11,8 @@ describe("Analytics Filters", function () {
   beforeEach("Go to Data Page", () => {
     cy.visit("/data");
     // Opens Filter Sidebar on Analytics
-    cy.get(".DashboardHeader__Actions > :nth-child(1)").first().click();
-    cy.get(".SidebarWrapper--filters > .SidebarWrapper-header > .btn").should(
-      "be.visible"
-    );
+    cy.openFilters();
   });
-
-  //Closes Filter Sidebar
-  it("Close Opened Filter Sidebar", () => {
-    cy.get(".SidebarWrapper--filters .SidebarWrapper-header button").click();
-    cy.get('.SidebarWrapper--filters > .SidebarWrapper-header > .btn').should("not.be.visible")
-    cy.wait(500);
-  });
-
-  //Apply Country Filter Criteria
-  //   it("Apply Country Filter", () => {
-  //     const filters = cy
-  //       .get(".SidebarWrapper-container")
-  //       .contains(".FilterItem > div:first-child", "COUNTRY");
-
-  //     let selectFilter = filters.get(".Select");
-  //     selectFilter.first().click();
-  //     selectFilter.get(".Select-option").contains("United States").click();
-  //     cy.wait(1000);
-  //     cy.get("button.FilterButton span:nth-child(2)").should("be.visible");
-  //   });
-  // });
 
   it("Widget Sample Size (No Filtering)", () => {
     cy.get('[data-reset-point="true"] > .bg-white > .WidgetContainer');
@@ -45,14 +21,13 @@ describe("Analytics Filters", function () {
         "Which of the following are most important to you in your life right now?"
       )
       .should("be.visible");
-    cy.get(".WidgetHeader__sampleSize").contains("3866");
+    cy.get(".WidgetHeader__sampleSize").contains("4334");
   });
 
   //Apply Month Filter Criteria
-  it("Apply Month Filtering", () => {
+  it("Add Filters", () => {
     const filters = cy
       .get(".SidebarWrapper-container")
-      .contains(".FilterItem > div:nth-child(1)", "Month");
 
     //Add first Month Filter
     let selectFilter = filters.get(".Select");
@@ -62,7 +37,6 @@ describe("Analytics Filters", function () {
     selectFilter.get(".Select-option").contains("August/2022 (4668)").click();
 
     //Validate Sample Size after adding Month Filter (1)
-    cy.get('[data-reset-point="true"] > .bg-white > .WidgetContainer');
     cy.get(".WidgetHeader__title")
       .contains(
         "Which of the following are most important to you in your life right now?"
@@ -76,7 +50,7 @@ describe("Analytics Filters", function () {
     ).click();
     selectFilter
       .get(".Select-option")
-      .contains("September/2022 (2422)")
+      .contains("September/2022 (2482)")
       .click();
 
     //Validate Sample Size after adding Month Filter (2)
@@ -96,5 +70,22 @@ describe("Analytics Filters", function () {
     cy.get("button.FilterButton span:nth-child(2)")
       .contains("September/2022")
       .should("be.visible");
+
+    //Clear Filters
+    cy.get(
+      ".SidebarWrapper--filters > .SidebarWrapper-container > :nth-child(1) > .clearfix > .btn"
+    )
+      .contains("Clear Filters")
+      .click();
+
+    cy.wait(1000);
+    cy.get(".WidgetHeader__title")
+      .contains(
+        "Which of the following are most important to you in your life right now?"
+      )
+      .should("be.visible");
+    cy.get(".WidgetHeader__sampleSize").contains("4334");
+
+    cy.closeFilters();
   });
 });
