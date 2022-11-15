@@ -65,25 +65,25 @@ Cypress.Commands.add("login", (email, password) => {
   cy.get('[type="submit"]').click();
 });
 
-Cypress.Commands.add("api_login", (slug, dashboard) => {
-  const apiUrl =
-    "https://dashlord-api.streetbees.com/v1/clients/streetbees-staging/project/demoboard-v2/login";
-  var token = "";
-  cy.request({
-    method: "POST",
-    url: apiUrl,
-    body: {
-      user: {
-        email: Cypress.env("email"),
-        password: Cypress.env("password"),
-      },
-    },
-  }).then((json) => {
-    token = json.body.data.user.token;
-    return token;
-    console.log();
-  });
-});
+// Cypress.Commands.add("api_login", (slug, dashboard) => {
+//   const apiUrl =
+//     "https://dashlord-api.streetbees.com/v1/clients/streetbees-staging/project/demoboard-v2/login";
+//   var token = "";
+//   cy.request({
+//     method: "POST",
+//     url: apiUrl,
+//     body: {
+//       user: {
+//         email: Cypress.env("email"),
+//         password: Cypress.env("password"),
+//       },
+//     },
+//   }).then((json) => {
+//     token = json.body.data.user.token;
+//     return token;
+//     console.log();
+//   });
+// });
 
 //Logout
 Cypress.Commands.add("logout", () => {

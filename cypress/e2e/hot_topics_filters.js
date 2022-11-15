@@ -26,8 +26,7 @@ describe("Analytics Filters", function () {
 
   //Apply Month Filter Criteria
   it("Add Filters", () => {
-    const filters = cy
-      .get(".SidebarWrapper-container")
+    const filters = cy.get(".SidebarWrapper-container");
 
     //Add first Month Filter
     let selectFilter = filters.get(".Select");
